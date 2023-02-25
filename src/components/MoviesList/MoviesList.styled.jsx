@@ -6,7 +6,6 @@ export const Container = styled.ul`
   gap: 16px;
   
 `;
-
 export const CardWrapper = styled.li`
   border-radius: 4px;
 
@@ -14,11 +13,9 @@ export const CardWrapper = styled.li`
     text-decoration: none;
   }
 `;
-
 export const CardImg = styled.img`
   border-radius: 4px;
-`
-
+`;
 export const MovieName = styled.h2`
   padding: 4px;
   margin-top: 8px;
@@ -28,5 +25,4 @@ export const MovieName = styled.h2`
   &:hover {
     color: orange;
   }
-
 `;

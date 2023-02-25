@@ -1,8 +1,21 @@
-import { useParams, useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
+import { useParams, useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMoviesDetails, BASE_URL_IMG } from 'apiService';
 import { Loader } from 'components/Loader/Loader';
-
+import {
+  ContainerDetails,
+  DetailsImg,
+  MovieTitle,
+  MovieList,
+  MovieListItem,
+  MovieListItemTitle,
+  MovieDetailsVotes,
+  MovieDetailsVoteValue,
+  MovieDetailsVotesValue,
+  MovieDetailsText,
+  LinkMovieDetails,
+  LinkBtn,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [detail, setDetail] = useState(null);
@@ -13,35 +26,68 @@ const MovieDetails = () => {
 
   const handleGoBack = () => {
     navigate(location.state.from);
-  }
+  };
 
-  useEffect(()=> {
-setLoading(true);
-    getMoviesDetails(movieId).then(setDetail).finally(()=> 
-      setLoading(false)
-     );
-  },[movieId]);
-if (!detail) {
-  return null;
-}
+  useEffect(() => {
+    setLoading(true);
+    getMoviesDetails(movieId)
+      .then(setDetail)
+      .finally(() => setLoading(false));
+  }, [movieId]);
+  if (!detail) {
+    return null;
+  }
   return (
-    <div>
-       {isLoading && <Loader/>}
-      <button type='button' onClick={handleGoBack}>Go back</button>
- 
-      <img src={BASE_URL_IMG+detail.poster_path} alt='' />
-      <h1>{detail.title}</h1>
-      
-      <ul>
+    <>
+      {isLoading && <Loader />}
+      <button type="button" onClick={handleGoBack}>
+        Go back
+      </button>
+      <ContainerDetails>
+        <DetailsImg src={BASE_URL_IMG + detail.poster_path} alt="" />
+        <div>
+          <MovieTitle>{detail.title}</MovieTitle>
+          <MovieList>
+            <MovieListItem>
+              <MovieListItemTitle>Vote / Votes</MovieListItemTitle>
+              <MovieDetailsVotes>
+                <MovieDetailsVoteValue>
+                  {detail.vote_average.toFixed(1)}
+                </MovieDetailsVoteValue>{' '}
+                /
+                <MovieDetailsVotesValue>
+                  {detail.vote_count}
+                </MovieDetailsVotesValue>
+              </MovieDetailsVotes>
+            </MovieListItem>
+            <MovieListItem>
+              <MovieListItemTitle>Popularity</MovieListItemTitle>
+              <MovieDetailsVotes>
+                {detail.popularity.toFixed(1)}
+              </MovieDetailsVotes>
+            </MovieListItem>
+            <MovieListItem>
+              <MovieListItemTitle>Original Title</MovieListItemTitle>
+              <MovieDetailsVotes>{detail.original_title}</MovieDetailsVotes>
+            </MovieListItem>
+          </MovieList>
+          <MovieDetailsText>{detail.overview}</MovieDetailsText>
+        </div>
+      </ContainerDetails>
+      <LinkMovieDetails>
         <li>
-          <Link to="cast" state={{ from: location.state.from }}>Cast</Link>
+          <LinkBtn to="cast" state={{ from: location.state.from }}>
+            Cast
+          </LinkBtn>
         </li>
         <li>
-          <Link to="reviews" state={{ from: location.state.from }}>Reviews</Link>
+          <LinkBtn to="reviews" state={{ from: location.state.from }}>
+            Reviews
+          </LinkBtn>
         </li>
-      </ul>
+      </LinkMovieDetails>
       <Outlet />
-    </div>
+    </>
   );
 };
 
