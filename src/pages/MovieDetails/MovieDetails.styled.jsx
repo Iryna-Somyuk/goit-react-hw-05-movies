@@ -4,12 +4,33 @@ import { NavLink } from 'react-router-dom';
 export const ContainerDetails = styled.div`
   display: flex;
   gap: 12px;
+  // margin-bottom: 20px;
 `;
+
+export const GoBackBtn = styled.button`
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  text-decoration: none;
+
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  background-color: rgb(220, 211, 200);
+  border: 1px solid black;
+
+  &:hover {
+    color: white;
+    background-color: orangered;
+  }
+`;
+
+
 export const DetailsImg = styled.img`
   object-fit: contain;
   width: 375px;
   height: 478px;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 `;
 
 export const MovieTitle = styled.h2`
@@ -74,10 +95,10 @@ export const MovieDetailsText = styled.p`
   margin-bottom: 30px;
 `;
 export const LinkMovieDetails = styled.ul`
-  padding: 20px;
+  // padding: 20px;
   display: flex;
   gap: 15px;
-  margin-bottom: 30px;
+  margin: 30px auto;
 `;
 export const LinkBtn = styled(NavLink)`
   padding: 8px 16px;

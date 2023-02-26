@@ -4,6 +4,7 @@ import { getMoviesDetails, BASE_URL_IMG } from 'apiService';
 import { Loader } from 'components/Loader/Loader';
 import {
   ContainerDetails,
+  GoBackBtn,
   DetailsImg,
   MovieTitle,
   MovieList,
@@ -16,6 +17,7 @@ import {
   LinkMovieDetails,
   LinkBtn,
 } from './MovieDetails.styled';
+
 
 const MovieDetails = () => {
   const [detail, setDetail] = useState(null);
@@ -40,9 +42,7 @@ const MovieDetails = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <button type="button" onClick={handleGoBack}>
-        Go back
-      </button>
+      <GoBackBtn type="button" onClick={handleGoBack}>Go back</GoBackBtn>
       <ContainerDetails>
         <DetailsImg src={BASE_URL_IMG + detail.poster_path} alt="" />
         <div>

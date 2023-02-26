@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { FcFilmReel } from "react-icons/fc";
 import { Container, Header, Logo, Link } from './SharedLayout.styled';
 
 export const SharedLayout = () => {
@@ -8,9 +9,9 @@ export const SharedLayout = () => {
       <Header>
         <Logo>
           <span role="img" aria-label="computer icon">
-            💻
+          <FcFilmReel size={35}/>
           </span>{' '}
-          GoMerch Store
+          GoWatch Films
         </Logo>
         <nav>
           <Link to="/" end>

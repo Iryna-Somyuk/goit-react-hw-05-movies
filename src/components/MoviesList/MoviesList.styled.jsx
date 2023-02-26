@@ -1,10 +1,9 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Container = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
   gap: 16px;
-  
 `;
 export const CardWrapper = styled.li`
   border-radius: 4px;
